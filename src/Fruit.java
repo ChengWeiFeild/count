@@ -52,10 +52,13 @@ public class Fruit {
         this.discount = discount;
     }
 
-    public int getTotalPrice() {
+    public BigDecimal getTotalPrice() {
+        if(price==0||weight==0){
+            return BigDecimal.valueOf(0);
+        }
         BigDecimal p = new BigDecimal(Double.toString(price));
         BigDecimal d = new BigDecimal(Double.toString(discount));
         BigDecimal w = new BigDecimal(Double.toString(weight));
-        return  p.multiply(d).intValue();
+        return  p.multiply(w).multiply(d);
     }
 }
